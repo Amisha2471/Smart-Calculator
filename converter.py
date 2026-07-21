@@ -1,6 +1,6 @@
 from constant import LENGTH_UNITS , WEIGHT_UNITS
 
-def convert_lenghth (value , from_unit, to_unit):
+def convert_length (value , from_unit, to_unit):
 
     #convert to base unit (meters)
     value_in_meters = value* LENGTH_UNITS[from_unit]
