@@ -1,3 +1,4 @@
+import requests
 from constant import LENGTH_UNITS , WEIGHT_UNITS
 
 def convert_length (value , from_unit, to_unit):
@@ -42,3 +43,21 @@ def convert_temperature (value , from_unit, to_unit):
         return round (celsius + 273.15 ,2)
     else:
         return round (celsius  ,2)
+    
+def convert_currency(amount, from_currency, to_currency):
+
+    API_KEY = "6500edfc04af06dccefcc5fc"
+
+    url = f" https://v6.exchangerate-api.com/v6/6500edfc04af06dccefcc5fc/latest/USD"
+    response = requests.get(url)
+
+    data = response.json()
+
+    if data["result"] != "success":
+        return "Error fetching exchange rates!"
+
+    rates = data["conversion_rates"]
+
+    converted_amount = amount * rates[to_currency]
+
+    return round(converted_amount, 4)
