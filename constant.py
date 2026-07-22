@@ -32,3 +32,17 @@ WEIGHT_UNITS = {
 }
 
 TEMPERATURE_UNITS = ("Celsius" , "Fahrenheit" , "Kelvin")
+
+CURRENCY_UNITS = {
+    "Indian Rupee (INR)": "INR",
+    "US Dollar (USD)": "USD",
+    "Euro (EUR)": "EUR",
+    "British Pound (GBP)": "GBP",
+    "Australian Dollar (AUD)": "AUD",
+    "Canadian Dollar (CAD)": "CAD",
+    "Singapore Dollar (SGD)": "SGD",
+    "Japanese Yen (JPY)": "JPY",
+    "Chinese Yuan (CNY)": "CNY",
+    "UAE Dirham (AED)": "AED",
+    "Swiss Franc (CHF)": "CHF"
+}
