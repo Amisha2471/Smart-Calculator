@@ -24,6 +24,7 @@ from converter import (
     convert_length,
     convert_weight,
     convert_temperature,
+    convert_currency,
 )
 
 from constant import (
@@ -33,6 +34,7 @@ from constant import (
     LENGTH_UNITS,
     WEIGHT_UNITS,
     TEMPERATURE_UNITS,
+    CURRENCY_UNITS,
 )
 
 # PAGE CONFIG
@@ -574,6 +576,7 @@ elif mode == "Unit Converter":
             "Length",
             "Weight",
             "Temperature",
+            "Currency",
         ],
     )
 
@@ -600,7 +603,6 @@ elif mode == "Unit Converter":
             )
 
         
-
     # -------------------------
     # WEIGHT
     # -------------------------
@@ -621,13 +623,31 @@ elif mode == "Unit Converter":
                 key="wt_to",
             )
 
-        
+    # -------------------------
+    # CURRENCY
+    # -------------------------
+
+    elif category == "Currency":
+
+        with col1:
+            from_unit = st.selectbox(
+                "From",
+                list(CURRENCY_UNITS.keys()),
+                key="currency_from",
+            )
+
+        with col2:
+            to_unit = st.selectbox(
+                "To",
+                list(CURRENCY_UNITS.keys()),
+                key="currency_to",
+            )
 
     # -------------------------
     # TEMPERATURE
     # -------------------------
 
-    else:
+    elif category == "Temperature":
 
         with col1:
             from_unit = st.selectbox(
@@ -642,8 +662,6 @@ elif mode == "Unit Converter":
                 TEMPERATURE_UNITS,
                 key="temp_to",
             )
-
-        
 
     # -------------------------
     # VALUE
@@ -673,7 +691,15 @@ elif mode == "Unit Converter":
                 to_unit,
             )
 
-        else:
+        elif category == "Currency":
+
+            result = convert_currency(
+                value,
+                CURRENCY_UNITS[from_unit],
+                CURRENCY_UNITS[to_unit],
+            )
+
+        elif category == "Temperature":
 
             result = convert_temperature(
                 value,
@@ -689,6 +715,7 @@ elif mode == "Unit Converter":
             f"{value} {from_unit} → {to_unit}",
             f"{result} {to_unit}",
         )
+
         st.divider()
 
 # ==========================
