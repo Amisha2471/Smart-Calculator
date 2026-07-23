@@ -1,4 +1,8 @@
+import os
 import requests
+from dotenv import load_dotenv
+
+load_dotenv()
 from constant import LENGTH_UNITS , WEIGHT_UNITS
 
 def convert_length (value , from_unit, to_unit):
@@ -43,14 +47,23 @@ def convert_temperature (value , from_unit, to_unit):
         return round (celsius + 273.15 ,2)
     else:
         return round (celsius  ,2)
-    
+import requests
+
 def convert_currency(amount, from_currency, to_currency):
 
-    API_KEY = "6500edfc04af06dccefcc5fc"
+    API_KEY = os.getenv("EXCHANGE_API_KEY")
 
-    url = f" https://v6.exchangerate-api.com/v6/6500edfc04af06dccefcc5fc/latest/USD"
+    url = f"https://v6.exchangerate-api.com/v6/a5ec1fb98ecc7c34eefa4c21/latest/{from_currency}"
+
+    print(API_KEY)
+    print(url)
+
     response = requests.get(url)
 
+    print(response.status_code)
+    print(response.text)
+
+    response = requests.get(url)
     data = response.json()
 
     if data["result"] != "success":
