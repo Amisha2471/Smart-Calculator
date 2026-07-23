@@ -53,7 +53,7 @@ def convert_currency(amount, from_currency, to_currency):
 
     API_KEY = os.getenv("EXCHANGE_API_KEY")
 
-    url = f"https://v6.exchangerate-api.com/v6/a5ec1fb98ecc7c34eefa4c21/latest/{from_currency}"
+    url = f"https://v6.exchangerate-api.com/v6/ 880d45feeb3dfa225fce7ee8/latest/{from_currency}"
 
     print(API_KEY)
     print(url)
